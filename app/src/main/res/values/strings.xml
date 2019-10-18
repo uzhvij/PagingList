@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PagingList</string>
+
+    <string-array name="fields_name">
+        <item>Name: </item>
+        <item>Year: </item>
+        <item>Director: </item>
+        <item>Countries: </item>
+        <item>Description: </item>
+    </string-array>
 </resources>

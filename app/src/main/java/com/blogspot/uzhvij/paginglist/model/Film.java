@@ -1,16 +1,18 @@
-package com.blogspot.uzhvij.paginglist.DataSource;
+package com.blogspot.uzhvij.paginglist.model;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class Film {
+public class Film {
 
     @SerializedName("countries")
     @Expose
     private String countries;
     @SerializedName("duration")
     @Expose
-    private String duration;
+    private Integer duration;
     @SerializedName("partner")
     @Expose
     private String partner;
@@ -22,13 +24,13 @@ class Film {
     private String image;
     @SerializedName("content_group_ptr")
     @Expose
-    private String contentGroupPtr;
+    private Integer contentGroupPtr;
     @SerializedName("favorites")
     @Expose
-    private String favorites;
+    private Integer favorites;
     @SerializedName("adult")
     @Expose
-    private String adult;
+    private Integer adult;
     @SerializedName("description")
     @Expose
     private String description;
@@ -37,10 +39,10 @@ class Film {
     private String genres;
     @SerializedName("year")
     @Expose
-    private String year;
+    private Integer year;
     @SerializedName("content_type_ptr")
     @Expose
-    private String contentTypePtr;
+    private Integer contentTypePtr;
     @SerializedName("partner_path")
     @Expose
     private String partnerPath;
@@ -49,10 +51,10 @@ class Film {
     private String added;
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
     @SerializedName("locked")
     @Expose
-    private String locked;
+    private Integer locked;
     @SerializedName("name")
     @Expose
     private String name;
@@ -61,7 +63,7 @@ class Film {
     private String comments;
     @SerializedName("director")
     @Expose
-    private String director;
+    private Object director;
     @SerializedName("created")
     @Expose
     private String created;
@@ -70,7 +72,28 @@ class Film {
     private String age;
     @SerializedName("status")
     @Expose
-    private String status;
+    private Integer status;
+
+    public static DiffUtil.ItemCallback<Film> DIFF_CALLBACK = new DiffUtil.ItemCallback<Film>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Film oldItem, @NonNull Film newItem) {
+            return oldItem.id.equals(newItem.id);
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Film oldItem, @NonNull Film newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Film && obj == this)
+            return true;
+
+        Film film = (Film) obj;
+        return film.id.equals(this.id);
+    }
 
     public String getCountries() {
         return countries;
@@ -80,11 +103,11 @@ class Film {
         this.countries = countries;
     }
 
-    public String getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
@@ -112,27 +135,27 @@ class Film {
         this.image = image;
     }
 
-    public String getContentGroupPtr() {
+    public Integer getContentGroupPtr() {
         return contentGroupPtr;
     }
 
-    public void setContentGroupPtr(String contentGroupPtr) {
+    public void setContentGroupPtr(Integer contentGroupPtr) {
         this.contentGroupPtr = contentGroupPtr;
     }
 
-    public String getFavorites() {
+    public Integer getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(String favorites) {
+    public void setFavorites(Integer favorites) {
         this.favorites = favorites;
     }
 
-    public String getAdult() {
+    public Integer getAdult() {
         return adult;
     }
 
-    public void setAdult(String adult) {
+    public void setAdult(Integer adult) {
         this.adult = adult;
     }
 
@@ -152,19 +175,19 @@ class Film {
         this.genres = genres;
     }
 
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public String getContentTypePtr() {
+    public Integer getContentTypePtr() {
         return contentTypePtr;
     }
 
-    public void setContentTypePtr(String contentTypePtr) {
+    public void setContentTypePtr(Integer contentTypePtr) {
         this.contentTypePtr = contentTypePtr;
     }
 
@@ -184,19 +207,19 @@ class Film {
         this.added = added;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getLocked() {
+    public Integer getLocked() {
         return locked;
     }
 
-    public void setLocked(String locked) {
+    public void setLocked(Integer locked) {
         this.locked = locked;
     }
 
@@ -216,11 +239,11 @@ class Film {
         this.comments = comments;
     }
 
-    public String getDirector() {
+    public Object getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(Object director) {
         this.director = director;
     }
 
@@ -240,11 +263,11 @@ class Film {
         this.age = age;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 

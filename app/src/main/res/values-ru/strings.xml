@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PagingList</string>
+    <string-array name="fields_name">
+        <item>"Название: "</item>
+        <item>Год: </item>
+        <item>Режиссер: </item>
+        <item>Страна: </item>
+        <item>Описание: </item>
+    </string-array>
+</resources>

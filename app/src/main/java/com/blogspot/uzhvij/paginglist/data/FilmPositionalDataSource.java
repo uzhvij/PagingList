@@ -1,7 +1,9 @@
-package com.blogspot.uzhvij.paginglist.DataSource;
+package com.blogspot.uzhvij.paginglist.data;
+
 import androidx.annotation.NonNull;
 import androidx.paging.PositionalDataSource;
-
+import com.blogspot.uzhvij.paginglist.model.Film;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmPositionalDataSource extends PositionalDataSource<Film> {
@@ -13,13 +15,18 @@ public class FilmPositionalDataSource extends PositionalDataSource<Film> {
 
     @Override
     public void loadInitial(@NonNull LoadInitialParams params, @NonNull LoadInitialCallback<Film> callback) {
-        List<Film> result = filmStorage.getData();
-        callback.onResult(result,0);
+        List<Film> result = filmStorage.getData(params.requestedStartPosition, params.requestedLoadSize);
+        callback.onResult(result, 0);
     }
 
     @Override
     public void loadRange(@NonNull LoadRangeParams params, @NonNull LoadRangeCallback<Film> callback) {
-        List<Film> result = filmStorage.getData();
+        List<Film> result;
+        try {
+            result = filmStorage.getData(params.startPosition, params.loadSize);
+        } catch (IndexOutOfBoundsException e) {
+            result = new ArrayList();
+        }
         callback.onResult(result);
     }
 }
