@@ -1,7 +1,8 @@
-package com.blogspot.uzhvij.paginglist.data;
+package com.blogspot.uzhvij.paginglist.business_logic;
 
 import androidx.annotation.NonNull;
 import androidx.paging.PositionalDataSource;
+import com.blogspot.uzhvij.paginglist.data.FilmStorage;
 import com.blogspot.uzhvij.paginglist.model.Film;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public class FilmPositionalDataSource extends PositionalDataSource<Film> {
     private final FilmStorage filmStorage;
 
-    public FilmPositionalDataSource(FilmStorage filmStorage) {
+    FilmPositionalDataSource(FilmStorage filmStorage) {
         this.filmStorage = filmStorage;
     }
 

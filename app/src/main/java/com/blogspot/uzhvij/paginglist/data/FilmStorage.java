@@ -35,7 +35,7 @@ public class FilmStorage {
         }
     }
 
-    List<Film> getData(int startPosition, int loadSize) {
+    public List<Film> getData(int startPosition, int loadSize) {
         return films.subList(startPosition, startPosition + loadSize);
     }
 }
