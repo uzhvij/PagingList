@@ -6,13 +6,22 @@ import com.blogspot.uzhvij.paginglist.model.Film;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class FilmFileStorage {
-    private List<Film> films = null;
+    private List films;
 
     public FilmFileStorage(Context context) {
+        films = getDataFromFile(context);
+    }
+
+    public List getData(int startPosition, int loadSize) {
+        return films.subList(startPosition, startPosition + loadSize);
+    }
+
+    private static List getDataFromFile(Context context) {
         Gson gson = new Gson();
         String stringFromJson = null;
         String filename = "jsonFilms.txt";
@@ -31,11 +40,8 @@ public class FilmFileStorage {
         Film[] data;
         if (stringFromJson != null) {
             data = gson.fromJson(stringFromJson, Film[].class);
-            films = Arrays.asList(data);
+            return Arrays.asList(data);
         }
-    }
-
-    public List<Film> getData(int startPosition, int loadSize) {
-        return films.subList(startPosition, startPosition + loadSize);
+        return new ArrayList();
     }
 }

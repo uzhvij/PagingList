@@ -7,7 +7,6 @@ import com.blogspot.uzhvij.paginglist.model.Film;
 
 public class FilmDataFactory extends DataSource.Factory<Integer, Film> {
     private final FilmFileStorage filmFileStorage;
-    private FilmPositionalDataSource dataSource;
 
     public FilmDataFactory(FilmFileStorage filmFileStorage) {
         this.filmFileStorage = filmFileStorage;
@@ -15,8 +14,7 @@ public class FilmDataFactory extends DataSource.Factory<Integer, Film> {
 
     @Override
     public DataSource create() {
-        dataSource = new FilmPositionalDataSource(filmFileStorage);
-        return dataSource;
+        return new FilmPositionalDataSource(filmFileStorage);
     }
 }
 
