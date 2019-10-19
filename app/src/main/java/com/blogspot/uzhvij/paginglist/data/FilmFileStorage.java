@@ -9,10 +9,10 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
-public class FilmStorage {
+public class FilmFileStorage {
     private List<Film> films = null;
 
-    public FilmStorage(Context context) {
+    public FilmFileStorage(Context context) {
         Gson gson = new Gson();
         String stringFromJson = null;
         String filename = "jsonFilms.txt";

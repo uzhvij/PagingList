@@ -2,20 +2,20 @@ package com.blogspot.uzhvij.paginglist.business_logic;
 
 import androidx.paging.DataSource;
 
-import com.blogspot.uzhvij.paginglist.data.FilmStorage;
+import com.blogspot.uzhvij.paginglist.data.FilmFileStorage;
 import com.blogspot.uzhvij.paginglist.model.Film;
 
 public class FilmDataFactory extends DataSource.Factory<Integer, Film> {
-    private final FilmStorage filmStorage;
+    private final FilmFileStorage filmFileStorage;
     private FilmPositionalDataSource dataSource;
 
-    public FilmDataFactory(FilmStorage filmStorage) {
-        this.filmStorage = filmStorage;
+    public FilmDataFactory(FilmFileStorage filmFileStorage) {
+        this.filmFileStorage = filmFileStorage;
     }
 
     @Override
     public DataSource create() {
-        dataSource = new FilmPositionalDataSource(filmStorage);
+        dataSource = new FilmPositionalDataSource(filmFileStorage);
         return dataSource;
     }
 }
